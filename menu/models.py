@@ -12,7 +12,7 @@ class Post(models.Model):
     author = models.TextField()
 
     def get_absolute_url(self):
-        return reverse('blog_post_detail', args=[self.slug])
+        return reverse('menu_detail', args=[self.slug])
 
     def save(self, *args, **kwargs):
         if not self.slug:
