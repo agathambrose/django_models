@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
-class Post(models.Model):
+class Menu(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, max_length=255)
     content = models.TextField()
@@ -17,7 +17,7 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        super(Post, self).save(*args, **kwargs)
+        super(Menu, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['created_on']
@@ -30,5 +30,5 @@ class Comment(models.Model):
     name = models.CharField(max_length=42)
     email = models.EmailField(max_length=75)
     meal_name = models.TextField()
-    order = models.ForeignKey(Post, on_delete=models.CASCADE)
+    order = models.ForeignKey(Menu, on_delete=models.CASCADE)
     created_on = models.DateTimeField(auto_now_add=True)
