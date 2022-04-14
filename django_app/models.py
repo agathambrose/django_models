@@ -11,3 +11,7 @@ class Post(models.Model):
         max_length=200, default='', null=True, blank=True)
     date_created = models.DateTimeField(
         auto_now_add=True, null=True, blank=True)
+
+
+class TestModel(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
